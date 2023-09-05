@@ -25,7 +25,24 @@
 #include <QApplication>
 #include <QFont>
 #include <QPushButton>
+#include <QCheckBox>
 #include <QWidget>
+#include <QVBoxLayout>
+
+void addCheckboxes(QWidget *window) {
+
+    auto *vbox = new QVBoxLayout(window);
+//    vbox->setSpacing(1);
+
+//    QCheckBox c("1", &window);
+    window->setLayout(vbox);
+
+//    auto *settings = new QPushButton("Settings", window);
+//    vbox->addWidget(settings);
+
+    auto *cb = new QCheckBox("Settings", window);
+    vbox->addWidget(cb);
+}
 
 int main(int argc, char *argv[])
 {
@@ -34,10 +51,12 @@ int main(int argc, char *argv[])
     QWidget window;
     window.resize(200, 120);
 
-    QPushButton quit("Quit", &window);
-    quit.setFont(QFont("Times", 18, QFont::Bold));
-    quit.setGeometry(10, 40, 180, 40);
-    QObject::connect(&quit, SIGNAL(clicked()), &app, SLOT(quit()));
+//    QPushButton quit("Quit", &window);
+//    quit.setFont(QFont("Times", 18, QFont::Bold));
+//    quit.setGeometry(10, 40, 180, 40);
+//    QObject::connect(&quit, SIGNAL(clicked()), &app, SLOT(quit()));
+
+    addCheckboxes(&window);
 
     window.show();
     return app.exec();
