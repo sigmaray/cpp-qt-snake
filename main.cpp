@@ -29,6 +29,10 @@
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QDebug>
+#include <QtWidgets/QMainWindow>
+#include <QKeyEvent>
+
 
 #define BOARD_SIZE 5
 
@@ -37,6 +41,9 @@ class Win : public QWidget {
 
  public:
      Win(QWidget *parent = nullptr);
+
+  protected:
+    void keyPressEvent( QKeyEvent *event );
 };
 
 Win::Win(QWidget *parent)
@@ -79,6 +86,21 @@ Win::Win(QWidget *parent)
         vbox->addLayout(hl);
     }
 }
+
+void Win::keyPressEvent( QKeyEvent *event )
+{
+    switch( event->key() )
+    {
+        case Qt::Key_Up:
+            qDebug() << "Key Up pressed";
+            break;
+
+        default:
+            qDebug() << "Key pressed:" << event->key();
+            break;
+    }
+}
+
 
 
 //void addCheckboxes(QWidget *window) {
