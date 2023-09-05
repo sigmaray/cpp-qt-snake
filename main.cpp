@@ -27,13 +27,14 @@
 #include <QPushButton>
 #include <QCheckBox>
 #include <QWidget>
+#include <QHBoxLayout>
 #include <QVBoxLayout>
 
 #define BOARD_SIZE 5
 
 void addCheckboxes(QWidget *window) {
 
-    auto *vbox = new QVBoxLayout(window);
+    auto *vbox = new QVBoxLayout();
 //    vbox->setSpacing(1);
 
 //    QCheckBox c("1", &window);
@@ -42,9 +43,13 @@ void addCheckboxes(QWidget *window) {
 //    auto *settings = new QPushButton("Settings", window);
 //    vbox->addWidget(settings);
 
-    for (int i = 0; i < BOARD_SIZE; i++) {
-        auto *cb = new QCheckBox(QString::number(i), window);
-        vbox->addWidget(cb);
+    for (int y = 0; y < BOARD_SIZE; y++) {
+        auto *hl = new QHBoxLayout();
+        for (int x = 0; x < BOARD_SIZE; x++) {
+            auto *cb = new QCheckBox("x: " + QString::number(x) + "| y: " +QString::number(y));
+            hl->addWidget(cb);
+        }
+        vbox->addLayout(hl);
     }
 }
 
