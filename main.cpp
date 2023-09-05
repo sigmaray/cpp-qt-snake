@@ -29,6 +29,8 @@
 #include <QWidget>
 #include <QVBoxLayout>
 
+#define BOARD_SIZE 5
+
 void addCheckboxes(QWidget *window) {
 
     auto *vbox = new QVBoxLayout(window);
@@ -40,8 +42,10 @@ void addCheckboxes(QWidget *window) {
 //    auto *settings = new QPushButton("Settings", window);
 //    vbox->addWidget(settings);
 
-    auto *cb = new QCheckBox("Settings", window);
-    vbox->addWidget(cb);
+    for (int i = 0; i < BOARD_SIZE; i++) {
+        auto *cb = new QCheckBox(QString::number(i), window);
+        vbox->addWidget(cb);
+    }
 }
 
 int main(int argc, char *argv[])
